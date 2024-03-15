@@ -1,5 +1,9 @@
-module.exports = async (req, res) => {
-  const { input } = req.body;
+exports.handler = async (event) => {
+  const { input } = JSON.parse(event.body);
   const output = Buffer.from(input).toString('base64');
-  res.json({ output });
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ output }),
+  };
 };

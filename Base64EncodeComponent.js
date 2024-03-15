@@ -12,8 +12,9 @@ const Base64EncodeComponent = () => {
 
   const handleEncode = async () => {
     try {
-      // Make a POST request to the server endpoint
-      const response = await axios.post('/base64Encode', { input });
+      const response = await axios.post('/.netlify/functions/base64Encode', {
+        input,
+      });
       setOutput(response.data.output);
       setError('');
     } catch (error) {
